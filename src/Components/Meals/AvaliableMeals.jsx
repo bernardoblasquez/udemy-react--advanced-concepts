@@ -35,6 +35,7 @@ const AvailableMeals = () => {
         return(
             <li> 
                 <MealsItem 
+                    id={meal.id}
                     key={meal.id} 
                     name={meal.name} 
                     description={meal.description} 
