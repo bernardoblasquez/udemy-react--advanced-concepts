@@ -5,16 +5,26 @@ import { useState } from 'react'
  
 function App() {
 
-  const [showCart, setShowCart] = useState(false)
+  const [cartIsShown, setCartIsShown] = useState(false)
   
-  let showModalCart = (showCart ? <Cart onClickCancel={setShowCart} /> : '' ) 
+
+  const hideModal = () =>{
+    setCartIsShown(false)
+  }
+
+  const showModal = () =>{
+    setCartIsShown(true)
+  }
+
+  let showModalCart = (cartIsShown && <Cart onCloseModal={hideModal} /> ) 
+
 
   return (
     <>
       
       {showModalCart}
 
-      <Header onClickCartButton={setShowCart} />
+      <Header onClickedCartButton={showModal} />
       <main>
         <Meals />
       </main>
