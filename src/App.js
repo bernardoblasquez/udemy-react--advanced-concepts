@@ -2,6 +2,7 @@ import Header from './Components/Layout/Header';
 import Meals from './Components/Meals/Meals';
 import Cart from './Components/Cart/Cart'
 import { useState } from 'react'
+import CartProvider from './store/CartProvider';
  
 function App() {
 
@@ -20,7 +21,7 @@ function App() {
 
 
   return (
-    <>
+    <CartProvider>
       
       {showModalCart}
 
@@ -28,7 +29,7 @@ function App() {
       <main>
         <Meals />
       </main>
-    </>
+    </CartProvider>
   );
 }
 
