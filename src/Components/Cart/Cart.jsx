@@ -5,6 +5,7 @@ import Modal from '../UI/Modal';
 import CartItem from './CartItem'
 import classes from  './Cart.module.css';
 import Checkout from './Checkout';
+import firebase_url from '../../firebase_url'
 
 const Cart = (props) => {
 
@@ -38,6 +39,17 @@ const Cart = (props) => {
             }
         </ul>
     );
+
+    const submitOrderHandler = (userData) => {
+        fetch(firebase_url, {
+            method: 'POST',
+            body: JSON.stringify({
+                user: userData,
+                orderedItems: cartCtx.items,
+            }) 
+        })
+        console.log(userData)
+    }
     
     const clickOrderButtonHandler = () => {
         setIsCheckout(true)
@@ -66,7 +78,7 @@ const Cart = (props) => {
                 <span>Total Amount</span>
                 <span>{totalAmount}</span>
             </div>
-            { isCheckout && <Checkout onCancel={props.onCloseModal} /> }
+            { isCheckout && <Checkout onConfirm={submitOrderHandler} onCancel={props.onCloseModal} /> }
             { !isCheckout && modalActions }
            
         </Modal>
