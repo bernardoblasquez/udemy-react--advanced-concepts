@@ -52,7 +52,7 @@ const Checkout = props => {
 
     return (
         <form className={classes.form} onSubmit={confirmHandler}>
-            <div className={classes.control}>
+            <div className={inputsIsValid.name ? classes.control : `${classes.control} ${classes.invalid}`}>
                 <label htmlFor='name'>Your Name</label>
                 <input 
                     ref={userNameInputRef}
@@ -60,7 +60,7 @@ const Checkout = props => {
                     id='name' />
                 {!inputsIsValid.name && <p>Enter with a valid Name</p>}
             </div>
-            <div className={classes.control}>
+            <div className={inputsIsValid.street ? classes.control : `${classes.control} ${classes.invalid}`}>
                 <label htmlFor='street'>Street</label>
                 <input 
                     ref={streetInputRef}
@@ -69,7 +69,7 @@ const Checkout = props => {
                 {!inputsIsValid.street && <p>Enter with a valid Street Name</p>}
                 
             </div>
-            <div className={classes.control}>
+            <div className={inputsIsValid.postalCode ? classes.control : `${classes.control} ${classes.invalid}`}>
                 <label htmlFor='postal'>Postal Code</label>
                 <input 
                     ref={postalCodeInputRef}
@@ -77,7 +77,7 @@ const Checkout = props => {
                     id='postal' />
                 {!inputsIsValid.postalCode && <p>The postal code must have 5 characters</p>}
             </div>
-            <div className={classes.control}>
+            <div className={inputsIsValid.city ? classes.control : `${classes.control} ${classes.invalid}`}>
                 <label htmlFor='city'>City</label>
                 <input 
                     ref={cityInputRef}
