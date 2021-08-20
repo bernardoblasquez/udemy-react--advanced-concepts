@@ -53,7 +53,7 @@ const Cart = (props) => {
         })
         setIsSubmitting(false)
         setDidSubmit(true)
-        console.log(userData)
+        cartCtx.clearCart();
     }
     
     const clickOrderButtonHandler = () => {
